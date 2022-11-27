@@ -1,5 +1,5 @@
 {
-  "name": "electron-webpack",
+  "name": "@delewis13/electron-webpack",
   "private": true,
   "license": "MIT",
   "author": "Vladimir Krivosheev <develar@gmail.com>",

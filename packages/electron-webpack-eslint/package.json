@@ -1,5 +1,5 @@
 {
-  "name": "electron-webpack-eslint",
+  "name": "@delewis13/electron-webpack",
   "version": "6.0.0",
   "license": "MIT",
   "author": "Greg Holguin <simulatedgreg@gmail.com>",

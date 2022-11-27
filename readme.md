@@ -1,3 +1,12 @@
+# Daniel's notes
+
+Current workflow:
+
+1. Make code changes
+2. Run `yarn compile`
+3. `cd packages/whichever_package`
+4. `yarn publish --access=public`
+
 # electron-webpack [![npm version](https://img.shields.io/npm/v/electron-webpack.svg)](https://npmjs.org/package/electron-webpack) [![Maintainers Wanted](https://img.shields.io/badge/maintainers-wanted-red.svg)](https://github.com/electron-userland/electron-webpack)
 
 
@@ -6,7 +15,7 @@ Project Status: maintenance mode. **Consider using [Vite](https://github.com/caw
 > Because setting up `webpack` in the `electron` environment shouldn't be difficult.
 
 ## Maintainer Needed
-This project is looking for active maintainers. Feel free to post [here](https://github.com/electron-userland/electron-webpack/issues/428). 
+This project is looking for active maintainers. Feel free to post [here](https://github.com/electron-userland/electron-webpack/issues/428).
 
 ## Overview
 Modern web development practices today require a lot of setup with things like `webpack` to bundle your code, `babel` for transpiling, `eslint` for linting, and so much more that the list just goes on. Unfortunately when creating `electron` applications, all of that setup just became much more difficult. The primary aim of `electron-webpack` is to eliminate all preliminary setup with one simple install so you can get back to developing your application.
@@ -47,5 +56,5 @@ If you already have an existing project, or are looking for a custom approach ou
 Make sure to take advantage of the detailed [documentation](https://webpack.electron.build) that `electron-webpack` provides. It covers everything from how things work internally, adding custom configurations, and building your application.
 
 ### Contributing
-Feel free to grab an issue and fix it or to share your features and improvements - PRs are always welcome!  
+Feel free to grab an issue and fix it or to share your features and improvements - PRs are always welcome!
 However, in order for your contribution to be property included in the automatically generated release notes, please use our [standard format](https://gist.github.com/develar/273e2eb938792cf5f86451fbac2bcd51) for your commit messages.

@@ -1,6 +1,7 @@
 import * as path from "path"
 import { WebpackConfigurator } from "../main"
 import { getFirstExistingFile } from "../util"
+import ForkTsCheckerWebpackPlugin from 'fork-ts-checker-webpack-plugin'
 
 export async function configureTypescript(configurator: WebpackConfigurator) {
   const hasTsChecker = configurator.hasDevDependency("fork-ts-checker-webpack-plugin") || configurator.hasDevDependency("electron-webpack-ts")
@@ -25,19 +26,18 @@ export async function configureTypescript(configurator: WebpackConfigurator) {
 
   // no sense to use fork-ts-checker-webpack-plugin for production build
   if (isTranspileOnly && !configurator.isTest) {
-    const hasVue = configurator.hasDependency("vue")
-    const ForkTsCheckerWebpackPlugin = require("fork-ts-checker-webpack-plugin")
     configurator.plugins.push(new ForkTsCheckerWebpackPlugin({
-      tsconfig: tsConfigFile,
+      typescript: {
+        configFile: tsConfigFile
+      },
       logger: configurator.env.forkTsCheckerLogger || {
         info: () => {
           // ignore
         },
-
+        log: console.log.bind(console),
         warn: console.warn.bind(console),
         error: console.error.bind(console),
       },
-      vue: hasVue
     }))
   }
 
