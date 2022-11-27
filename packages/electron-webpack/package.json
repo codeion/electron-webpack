@@ -1,6 +1,6 @@
 {
-  "name": "electron-webpack",
-  "version": "2.8.2",
+  "name": "@delewis13/electron-webpack",
+  "version": "2.4.8",
   "license": "MIT",
   "author": "Vladimir Krivosheev <develar@gmail.com>",
   "main": "out/main.js",
