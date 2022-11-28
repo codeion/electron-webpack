@@ -7,11 +7,10 @@ import * as path from "path"
 import { validateConfig } from "read-config-file"
 import { deepAssign } from "read-config-file/out/deepAssign"
 import "source-map-support/register"
-import { Configuration, Plugin, RuleSetRule } from "webpack"
+import { Configuration, WebpackPluginInstance, RuleSetRule } from "webpack"
 import merge from "webpack-merge"
 import { getElectronWebpackConfiguration, getPackageMetadata } from "./config"
 import { configureTypescript } from "./configurators/ts"
-import { configureVue } from "./configurators/vue/vue"
 import { ConfigurationEnv, ConfigurationType, ElectronWebpackConfiguration, PackageMetadata, PartConfiguration } from "./core"
 import { BaseTarget } from "./targets/BaseTarget"
 import { MainTarget } from "./targets/MainTarget"
@@ -76,7 +75,7 @@ export class WebpackConfigurator {
   }
 
   readonly rules: Array<RuleSetRule> = []
-  readonly plugins: Array<Plugin> = []
+  readonly plugins: Array<WebpackPluginInstance> = []
 
   // js must be first - e.g. iView has two files loading-bar.js and loading-bar.vue - when we require "loading-bar", js file must be resolved and not vue
   readonly extensions: Array<string> = [".js", ".json", ".node"]
@@ -212,7 +211,6 @@ export class WebpackConfigurator {
     this.debug(`Target class: ${target.constructor.name}`)
     target.configureRules(this)
     await Promise.all([target.configurePlugins(this), configureTypescript(this)])
-    configureVue(this)
 
     if (this.debug.enabled) {
       this.debug(`\n\n${this.type} config:` + JSON.stringify(this._configuration, null, 2) + "\n\n")
@@ -397,6 +395,7 @@ async function getInstalledElectronVersion(projectDir: string) {
       return (await readJson(path.join(projectDir, "node_modules", name, "package.json"))).version
     }
     catch (e) {
+      // @ts-ignore
       if (e.code !== "ENOENT") {
         throw e
       }

@@ -91,6 +91,7 @@ class DevRunner {
       },
     })
 
+    // @ts-ignore
     await new Promise((resolve: (() => void) | null, reject: ((error: Error) => void) | null) => {
       const compiler: Compiler = webpack(mainConfig!!)
 
@@ -102,11 +103,15 @@ class DevRunner {
         printCompilingMessage.schedule()
       })
 
-      let watcher: Compiler.Watching | null = compiler.watch({}, (error, stats) => {
+      let watcher: Compiler['watching'] | null = compiler.watch({}, (error, stats) => {
         printCompilingMessage.cancel()
 
         if (watcher == null) {
           return
+        }
+
+        if (!stats) {
+          throw new Error('No statsreturned')
         }
 
         if (error != null) {

@@ -77,7 +77,7 @@ export class ChildProcessManager {
 }
 
 export class PromiseNotifier {
-  constructor(private _resolve: (() => void) | null, private _reject: ((error: Error) => void) | null) {
+  constructor(private _resolve: ((value?: unknown) => void) | null, private _reject: ((error: Error) => void) | null) {
   }
 
   resolve() {

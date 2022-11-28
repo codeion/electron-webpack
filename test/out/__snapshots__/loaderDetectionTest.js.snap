@@ -79,3 +79,5 @@ resolve 'sass-loader' in '<project-dir>'
  @ ./src/renderer/index.js 3:0-22
  @ multi ./src/renderer/index.js"
 `;
+
+exports[`sass 2`] = `"Cannot read properties of undefined (reading 'get')"`;

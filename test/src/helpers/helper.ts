@@ -54,7 +54,11 @@ function statToMatchObject(stats: Stats, projectDir: string, fs: MemoryFS) {
   if (stats.hasErrors()) {
     console.log(stats.toString({colors: true}))
     // console.log("FS data: " + util.inspect(fs, {colors: true}))
-    throw new Error(stats.toJson().errors.join("\n"))
+    const message = stats.toJson()
+    if (!message || !message.errors) {
+      throw new Error('Unable to parse stats')
+    }
+    throw new Error(message.errors.join("\n"))
   }
 
   // skip first 3 lines - Hash, Version and Time
@@ -79,6 +83,11 @@ function compile(fs: any, configuration: Configuration, resolve: (stats: Stats) 
   compiler.run((error, stats) => {
     if (error != null) {
       reject(error)
+      return
+    }
+
+    if (!stats) {
+      reject(new Error('No stats returned'))
       return
     }
 
@@ -138,6 +147,7 @@ class Assertions {
       result = await this.actual
     }
     catch (e) {
+      // @ts-ignore
       actualError = e
     }
 
