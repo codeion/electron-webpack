@@ -255,7 +255,7 @@ export class WebpackConfigurator {
         return customModule(config, this)
       }
       else {
-        return merge.smart(config, customModule)
+        return merge(config, customModule)
       }
     }
 
