@@ -4,31 +4,29 @@ These add-ons are completely optional and may not support all use cases. If you 
 
 Current Add-ons:
 
-* [JavaScript Frameworks](#javascript-frameworks)
-    * [Vue.js](#vuejs)
-    * [React JSX](#react-jsx)
-* [Pre-processors](#pre-processors)
-    * [ESLint](#eslint)
-    * [TypeScript](#typescript)
-    * [Less](#less)
-    * [Sass/SCSS](#sassscss)
-    * [EJS](#ejs)
-    * [Nunjucks](#nunjucks)
-* [UI Libraries](#ui-libraries)
-    * [iView](#iview)
-* [Miscellaneous](#miscellaneous)
-    * [Build Notifications](#build-notifications)
+- [JavaScript Frameworks](#javascript-frameworks)
+    - [Adding TypeScript support](#adding-typescript-support)
+    - [Adding ESLint support](#adding-eslint-support)
+  - [React JSX](#react-jsx)
+  - [Adding TypeScript support for JSX (`.tsx` files)](#adding-typescript-support-for-jsx-tsx-files)
+- [Pre-processors](#pre-processors)
+  - [Babel](#babel)
+  - [ESLint](#eslint)
+  - [TypeScript](#typescript)
+  - [Less](#less)
+  - [Sass/SCSS](#sassscss)
+  - [EJS](#ejs)
+  - [Nunjucks](#nunjucks)
+- [UI Libraries](#ui-libraries)
+  - [iView](#iview)
+  - [Element](#element)
+- [Miscellaneous](#miscellaneous)
+  - [Build Notifications](#build-notifications)
 
 ---
 
 ## JavaScript Frameworks
 
-### Vue.js
-Adds support for Vue component files through the use of `vue-loader`. In addition, `vue-devtools` will also be installed for development purposes.
-
-```bash
-yarn add vue electron-webpack-vue --dev
-```
 
 #### Adding TypeScript support
 Install the [TypeScript](#typescript) add-on, followed by adding the below file to shim Vue component files.
