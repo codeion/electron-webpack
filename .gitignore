@@ -19,3 +19,6 @@ yarn-error.log
 .renderer-index-template.html
 
 /site/
+
+.yalc
+yalc.lock
