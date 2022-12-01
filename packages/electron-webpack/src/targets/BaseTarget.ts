@@ -5,7 +5,7 @@ import { configureDll } from "../configurators/dll"
 import { configureEslint } from "../configurators/eslint"
 import { createBabelLoader } from "../configurators/js"
 import { WebpackConfigurator } from "../main"
-import { WatchFilterPlugin } from "../plugins/WatchMatchPlugin"
+// import { WatchFilterPlugin } from "../plugins/WatchMatchPlugin"
 import { WebpackRemoveOldAssetsPlugin } from "../plugins/WebpackRemoveOldAssetsPlugin"
 
 export class BaseTarget {
@@ -101,12 +101,12 @@ export function configureFileLoader(prefix: string, limit = 10 * 1024) {
   }
 }
 
-function isAncestor(file: string, dir: string) {
-  if (file === dir) {
-    return true
-  }
-  return file.length > dir.length && file[dir.length] === path.sep && file.startsWith(dir)
-}
+// function isAncestor(file: string, dir: string) {
+//   if (file === dir) {
+//     return true
+//   }
+//   return file.length > dir.length && file[dir.length] === path.sep && file.startsWith(dir)
+// }
 
 function configureDevelopmentPlugins(configurator: WebpackConfigurator) {
   const optimization = configurator.config.optimization!!
@@ -146,17 +146,17 @@ function configureDevelopmentPlugins(configurator: WebpackConfigurator) {
     commonSourceDir = path.dirname(commonSourceDir)
   }
 
-  const alienSourceDir = configurator.getSourceDirectory(configurator.type === "main" ? "renderer" : "main")
-  const sourceDir = configurator.getSourceDirectory(configurator.type)
-  configurator.plugins.push(new WatchFilterPlugin(file => {
-    if (sourceDir != null && isAncestor(file, sourceDir)) {
-      return true
-    }
-    else if (file === commonSourceDir || isAncestor(file, commonSourceDir!!)) {
-      return alienSourceDir == null || !isAncestor(file, alienSourceDir)
-    }
-    else {
-      return false
-    }
-  }, require("debug")(`electron-webpack:watch-${configurator.type}`)))
+  // const alienSourceDir = configurator.getSourceDirectory(configurator.type === "main" ? "renderer" : "main")
+  // const sourceDir = configurator.getSourceDirectory(configurator.type)
+  // configurator.plugins.push(new WatchFilterPlugin(file => {
+  //   if (sourceDir != null && isAncestor(file, sourceDir)) {
+  //     return true
+  //   }
+  //   else if (file === commonSourceDir || isAncestor(file, commonSourceDir!!)) {
+  //     return alienSourceDir == null || !isAncestor(file, alienSourceDir)
+  //   }
+  //   else {
+  //     return false
+  //   }
+  // }, require("debug")(`electron-webpack:watch-${configurator.type}`)))
 }
