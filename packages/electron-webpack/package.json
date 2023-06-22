@@ -25,7 +25,7 @@
     "@types/webpack-env": "1.18.0",
     "async-exit-hook": "2.0.1",
     "bluebird": "3.7.2",
-    "chalk": "5.1.2",
+    "chalk": "4.1.2",
     "crocket": "1.0.15",
     "css-hot-loader": "1.4.4",
     "css-loader": "6.7.2",
